@@ -1,7 +1,6 @@
 const chai = require('chai')
 const expect = chai.expect
 const dirtyChai = require('dirty-chai')
-const sinon = require('sinon')
 const inquirer = require('inquirer')
 const CredentialManager = require('../lib/credential-manager')
 
@@ -28,8 +27,7 @@ describe('A credential manager', () => {
       expect(secret).to.equal('bar')
     })
   })
-  after(() => {
-    creds.conf.delete('apiKey')
-    creds.conf.delete('apiSecret')
+  after(async () => {
+    await creds.clearKeyAndSecret()
   })
 })
