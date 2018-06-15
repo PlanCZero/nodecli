@@ -1,33 +1,29 @@
+const path = require('path')
+const fs = require('fs')
 const chai = require('chai')
 const expect = chai.expect
+const chaiAsPromised = require('chai-as-promised')
 const dirtyChai = require('dirty-chai')
-const inquirer = require('inquirer')
-const CredentialManager = require('../lib/credential-manager')
+const CredentialManager = require('../../lib/credential-manager')
 
+chai.use(chaiAsPromised)
 chai.use(dirtyChai)
 describe('A credential manager', () => {
   var creds
   before(() => {
     creds = new CredentialManager('ncli-test')
   })
-  context('with no existing credentials', () => {
-    it('should prompt the user', async () => {
-      sinon.stub(inquirer, 'prompt').resolves({key: 'foo', secret: 'bar'})
-      let [key, secret] = await creds.getKeyAndSecret()
-      expect(key).to.equal('foo')
-      expect(secret).to.equal('bar')
-      expect(inquirer.prompt.calledOnce).to.be.true()
-      inquirer.prompt.restore()
-    })
+  it('should return credentials when they are found', async () => {
+    await creds.storeKeyAndSecret('foo', 'bar')
+    let [key, secret] = await creds.getKeyAndSecret()
+    expect(key).to.equal('foo')
+    expect(secret).to.equal('bar')
   })
-  context('with no existing credentials', () => {
-    it('should just return them', async () => {
-      let [key, secret] = await creds.getKeyAndSecret()
-      expect(key).to.equal('foo')
-      expect(secret).to.equal('bar')
-    })
-  })
-  after(async () => {
+  it('should reject when no credentials are found', async () => {
     await creds.clearKeyAndSecret()
+    expect(creds.getKeyAndSecret()).to.be.rejected()
+  })
+  after((done) => {
+    fs.unlink(path.join(process.env.HOME, '.config', 'configstore', 'ncli-test.json'), done)
   })
 })
