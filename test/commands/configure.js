@@ -20,7 +20,7 @@ describe('the configure module', () => {
     creds = new CredentialManager('ncli-test')
   })
   beforeEach(() => {
-    sandbox = sinon.sandbox.create()
+    sandbox = sinon.createSandbox()
   })
   it('should add credential when none are found', async () => {
     sandbox.stub(inquirer, 'prompt').resolves({key: 'one', secret: 'two'})
