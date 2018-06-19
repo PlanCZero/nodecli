@@ -1,6 +1,6 @@
 const querystring = require('querystring')
 const inquirer = require('inquirer')
-const opn = require('opn')
+
 const CredentialManager = require('../lib/credential-manager')
 const util = require('../lib/util')
 const Twitter = require('../lib/twitter')
@@ -35,7 +35,7 @@ const configure = {
       message: 'Press enter to open Twitter in your browser to authorize access',
       name: 'continue'
     })
-    opn(twitter.baseUrl + 'oauth/authorize?oauth_token=' + response['oauth_token'])
+    util.openBrowser(twitter.baseUrl + 'oauth/authorize?oauth_token=' + response['oauth_token'])
     let answers = await inquirer.prompt({
       type: 'input',
       message: 'Enter the PIN provided by Twitter',
@@ -53,7 +53,7 @@ const configure = {
       tokenResponse['oauth_token'],
       tokenResponse['oauth_token_secret']
     )
-    console.log('Account', verifyResponse['screen_name'] + ' successfully added.')
+    console.log('Account "' + verifyResponse['screen_name'] + '" successfully added.')
   }
 }
 module.exports = configure
