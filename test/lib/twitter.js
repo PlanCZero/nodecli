@@ -17,13 +17,13 @@ describe('the twitter module', () => {
     expect(twitter.token).to.include({secret: '123'})
   })
   it('should invoke GET APIs', async () => {
-    sinon.stub(axios, 'get').resolves('foo')
+    sinon.stub(axios, 'get').resolves({data: 'foo'})
     let response = await twitter.get('/api')
     expect(response).to.equal('foo')
     axios.get.restore()
   })
   it('should invoke POST APIs', async () => {
-    sinon.stub(axios, 'post').resolves('bar')
+    sinon.stub(axios, 'post').resolves({data: 'bar'})
     let response = await twitter.post('/api', 'staff')
     expect(response).to.equal('bar')
     axios.post.restore()
