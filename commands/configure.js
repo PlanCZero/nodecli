@@ -22,11 +22,11 @@ const configure = {
         validate: util.notEmpty
       }
     ])
-    await creds.storeKeyAndSecret('apiKey', answers.key, answers.secret)
+    await creds.storeKeyAndSecret('consumer', answers.key, answers.secret)
   },
   async account (name) {
     let creds = new CredentialManager(name)
-    var [apiKey, apiSecret] = await creds.getKeyAndSecret('apiKey')
+    var [apiKey, apiSecret] = await creds.getKeyAndSecret('consumer')
     let twitter = new Twitter(apiKey, apiSecret)
     let response = querystring.parse(await twitter.post('oauth/request_token'))
     twitter.setToken(response['oauth_token'], response['oauth_token_secret'])
