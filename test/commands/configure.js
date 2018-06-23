@@ -57,7 +57,7 @@ describe('the configure module', () => {
     sandbox.stub(console, 'log')
     await configure.account('ncli-test')
     CredentialManager.prototype.getKeyAndSecret.restore()
-    let [token, secret] = await creds.getKeyAndSecret('accountToken')
+    let [token, secret] = await creds.getKeyAndSecret('account')
     expect(token).to.equal('ghi')
     expect(secret).to.equal('jkl')
     expect(console.log.calledWith('Account "foo" successfully added.')).to.be.true()
@@ -68,6 +68,6 @@ describe('the configure module', () => {
   })
   after(async () => {
     await creds.clearAll()
-    fs.unlink(path.join(process.env.HOME, '.config', 'configstore', 'ncli-test.json'))
+    await fs.unlink(path.join(process.env.HOME, '.config', 'configstore', 'ncli-test.json'))
   })
 })

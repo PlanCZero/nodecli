@@ -36,6 +36,6 @@ describe('A credential manager', () => {
   })
   after(async () => {
     await creds.clearAll()
-    fs.unlink(path.join(process.env.HOME, '.config', 'configstore', 'ncli-test.json'))
+    await fs.unlink(path.join(process.env.HOME, '.config', 'configstore', 'ncli-test.json'))
   })
 })

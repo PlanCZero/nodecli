@@ -49,7 +49,7 @@ const configure = {
 
     let verifyResponse = await twitter.get('1.1/account/verify_credentials.json')
     await creds.storeKeyAndSecret(
-      'accountToken',
+      'account',
       tokenResponse['oauth_token'],
       tokenResponse['oauth_token_secret']
     )
