@@ -14,8 +14,7 @@ const configure = {
         name: 'key',
         message: 'Enter your key.',
         validate: util.notEmpty
-      },
-      {
+      }, {
         type: 'password',
         name: 'secret',
         message: 'Enter your secret key.',
@@ -26,33 +25,19 @@ const configure = {
   },
   async account (name) {
     let creds = new CredentialManager(name)
-    var [apiKey, apiSecret] = await creds.getKeyAndSecret('consumer')
+    var [apiKey,
+      apiSecret] = await creds.getKeyAndSecret('consumer')
     let twitter = new Twitter(apiKey, apiSecret)
     let response = querystring.parse(await twitter.post('oauth/request_token'))
     twitter.setToken(response['oauth_token'], response['oauth_token_secret'])
-    await inquirer.prompt({
-      type: 'input',
-      message: 'Press enter to open Twitter in your browser to authorize access',
-      name: 'continue'
-    })
+    await inquirer.prompt({type: 'input', message: 'Press enter to open Twitter in your browser to authorize access', name: 'continue'})
     util.openBrowser(twitter.baseUrl + 'oauth/authorize?oauth_token=' + response['oauth_token'])
-    let answers = await inquirer.prompt({
-      type: 'input',
-      message: 'Enter the PIN provided by Twitter',
-      name: 'pin',
-      validate: util.notEmpty
-    })
-    let tokenResponse = querystring.parse(
-      await twitter.post('oauth/access_token', 'oauth_verifier=' + answers['pin'])
-    )
+    let answers = await inquirer.prompt({type: 'input', message: 'Enter the PIN provided by Twitter', name: 'pin', validate: util.notEmpty})
+    let tokenResponse = querystring.parse(await twitter.post('oauth/access_token', 'oauth_verifier=' + answers['pin']))
     twitter.setToken(tokenResponse['oauth_token'], tokenResponse['oauth_token_secret'])
 
     let verifyResponse = await twitter.get('1.1/account/verify_credentials.json')
-    await creds.storeKeyAndSecret(
-      'account',
-      tokenResponse['oauth_token'],
-      tokenResponse['oauth_token_secret']
-    )
+    await creds.storeKeyAndSecret('account', tokenResponse['oauth_token'], tokenResponse['oauth_token_secret'])
     console.log('Account "' + verifyResponse['screen_name'] + '" successfully added.')
   }
 }
