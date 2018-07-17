@@ -1,7 +1,7 @@
 const program = require('commander')
 const pkg = require('../package.json')
 const configure = require('../commands/configure')
-const util = require('../../util')
+const util = require('../lib/util')
 program.version(pkg.version)
 
 program.command('consumer')
