@@ -24,6 +24,7 @@
     "parallel-transform": "^1.1.0",
     "promise-streams": "^2.1.1",
     "split2": "^2.2.0",
+    "stream-mock": "^1.2.0",
     "through2": "^2.0.3"
   },
   "devDependencies": {
