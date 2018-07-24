@@ -3,5 +3,13 @@ node_js: lts/carbon
 addons:
   apt:
     packages:
-      - libsecret-1-0
-      
+    - libsecret-1-0
+deploy:
+  provider: npm
+  api_key:
+    secure: Ti3IyRPLeMWF3LBy20hz6RVYra+wpYFubrcGuJaNZwY3C7nUnFCFSGpHryUoiaX4Ar56WcbIpqqMc9KpQUF81PM8sb7HKvh+Rpe+IGNBlsolQ0UDO4LNsN/qs8y6KMMOKuchqLA32+DQaX0ajHfBel03f7I7w0B3//J4YM19BQKmi5EmVHxqtXndH2rPja29XwVVK/MMTgaib43Tb58IUu8fD/wN8991Hb4vW8hUOagJOV7XHFUI3V56fRyOGxpPwZmf5B0aHbaAeUERbE0G9yXL14LregKJji47I/9Rvz1bZIzO08jMO9h0sxHjpUqfLqgNcdUZCoEJliUX6yeupu+yITf3cMdxx5VBNySqGIScJ4n/zvzsx7Q+uAfyaknKnf73PyuHAyC7tPa9f6ZZNMKDAQfy/LGOi5vJtwl87QLMF/TNt5XA9QI/aQuUariPvO1evSizTRzQ91E8n4NitT/TMiw5C815yv7y2HttFCCt3nArYqoxPmVO1L7LilD3dSdFXaIPVwkWXIviGqb5TkfF5F8yY2aMEqHeFW3f2n+JR6iZhoXwexiyViRXUsCPox/31HowU64EI8AxNtbBxz+k4/Vn4p/JgpPxejmqaXOogCJF9uktW0byKwBak7dZurRjnAMMJccEzOxZ3ZIYGfJWdbd1mWWN2cHVRCstM4A=
+  on:
+    tags: true
+    repo: PlanCZero/nodecli
+  email:
+    secure: zqPtLN3C3+g5eh2BUYDhn0OIG/FVpZ/YNp9QyJYn44xksA2GitqVBU6KQTapv16ohQoXpDtPOLPhwZGowEtiIeKKfGM7l3DO0kPcmX40lTOtkdmbSKPT2DaL/bHvttv/EkNysbVWAvp7wVitJBM3f8nTB63GziRTp8Y68nfyFd9v2M3DohOb3neCTRe+zDg6/NK3kacMGG1Mag+VPcDS/ZyvZ6WUy4aQgz7Z572hk2mOJMljBWNgWtvE7OdQU1nCkRfBACx+0FH19EdmpHiFMN4LjxjDfFch/AJCQj11wAE3iASS9+96t1DqT35wNzM4PGyZhU0mDl8jw0+IeLa+0L6Tvz/+RR82jC9W129NTZtxj8DYR9FOwwApUP6j/4u+PZCrisU2QBbvzDaOU2ReN3jv55xUn2zOKTx0FV6dSKVKbb2by79rglTeDvJ1sgLs05wEel3SK/aNeqrE7q/yTxqtF0I2oiogDeZDUe05aslIjVhVUb25nbL2CvHjXXyk/TBXpve78WBQxTMCN8pBrLJJZ/6PdjZU6OiyaT7HOyat5fIQUyB2oaiBUFqObHiRMwqWdX5MEo9gXahexQiWOvypqq+1X+vr5ZUwf44La5H+DS1aehbiV44tHRUAZd3WYiPoc0JPzsW7mX9fF+j5Gjj8qPeSz3zXKOMRo18cfXQ=
