@@ -1,10 +1,12 @@
 {
-  "name": "nodecli",
+  "name": "@planczero/nodecli",
   "version": "1.0.0",
   "description": "Learning",
-  "main": "ncli.js",
   "bin": {
     "ncli": "./bin/ncli.js"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "test": "nyc mocha --recursive"
