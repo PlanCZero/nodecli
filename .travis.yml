@@ -22,7 +22,7 @@ deploy:
     skip_cleanup: true
     on:
       tags: true
-      repo: planczero/nodecli
+      repo: PlanCZero/nodecli
 env:
   global:
   - secure: A9HDyZU2fTtnbAZbFFP2T1x3DzTkM3HZJGVgmlh8MyvMp2sOiaL1r5e2T4Iv6+Pe2m7+G19OPW/q6vOPgqrSYVUbfpQRZJG8T+6CsKp0DiQeYyxd30EGFimD5+b6L9Okr06RCRKjLC1YbWVX7ef/KAZrIOfC3klXXqtox1K4vXcaI2PFOvnt/cUxfylPrnMA3haa/a4MmB0TYcPOzAMkgXlZev5xKJ97zU4hT5O2FxJ4LVohOB0i8yTEfAMx7ecWERQycTgLAez1K640xOA0IdhugukyzVhiE1o/J49agCCPtb2NtLmWlIUOTIdumPEQgc++nbv/AotV8EJN5/qX7huSgwp0QbBY5VoyqmifiROeINW1FClP4SH38RqshRbggHC6M+EHr5ZkbSD7zsKmT51IUy10iILuGopYBLOo19Q5W7EjZDb05shMbS2zf/2RSZEekzO36+I/7qbbhJ4NuTaxeurP2P0RqKu6jzwuu6LRTn9S3xRdUxS9tZnmTDh9QWU7rwBQKZhCffQ9j7ibHxPGnCj6rR+1P4EWLGrCbnpf5vM4AitwQNh3m/fyepv2mxCIGkIk30/bWkZxOI1iTeky6c+DRzSaVJoeQzKtBekXyRPemVz2G9GOqeCnvU7BvIXeP9WEOzdmeR4HDHfhVBzzoDJyuq1A4ixvPsbCxqI=
