@@ -1,6 +1,6 @@
 {
   "name": "@planczero/nodecli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Learning",
   "bin": {
     "ncli": "./bin/ncli.js"
